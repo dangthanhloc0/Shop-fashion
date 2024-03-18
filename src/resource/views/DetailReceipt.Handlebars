@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Payment Interface</title>
+    <style>
+      /* Style the payment form */
+      form {
+        width: 400px;
+        margin: 0 auto;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Style the payment form labels */
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      /* Style the payment form input fields */
+      input[type="text"], select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        font-size: 16px;
+      }
+      p{
+        width: 400px    ;
+      }
+
+      /* Style the payment form submit button */
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      /* Style the payment form submit button on hover */
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      /* Style the payment form container */
+      .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+
+      /* Style the payment form header */
+      .header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 5px 5px 0 0;
+      }
+
+      /* Style the payment form Name field */
+      .Name {
+        display: inline-block;
+        width: 40%;
+      }
+
+      /* Style the payment form method selection field */
+      .method {
+        display: inline-block;
+        width: 60%;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Chi tiết thanh toán</h1>
+      </div>
+      <form method="post" action="save/buy">
+        <div class="Name">
+            <p>Tên tài khoản:<span>{{User.Name}}</span></p>
+            <p>Tên mặt hàng:<span>{{pt.Name}}</span> </p>
+        </div>
+
+        <div class="credit-card-details">
+          <label for="card-number">Số điện thoại:</label>
+          <input type="text" id="expiration-date" name="Phone" >
+        </div>
+
+        <div class="Address">
+          <label for="Address">Nhập địa chỉ giao hàng</label>
+          <input type="text" id="Address" name="Address" >
+        </div>
+        <p>Số tiền phải thanh toán:{{pt.Cost}}*{{body.quantity}}</p>
+        
+        <div class="method">
+            <label for="payment-method">Hình thức thanh toán:</label>
+            <select id="payment-method" name="payment-method" required>
+              <option value="">Vui lòng chọn hình thức thanh toán:</option>       
+              <option value=" ">Thanh toán trực tiếp</option>
+              <option value="credit-card">Thanh toán qua thẻ tín dụng</option>
+            </select>
+          </div>
+          <p></p>   
+        <input type="submit" value="Thanh toán">
+      </form>
+    </div>
+  </body>
+</html> 

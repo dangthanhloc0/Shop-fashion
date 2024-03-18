@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost:3000/css/HomePage/HomePage.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/HomePage/Base.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/HomePage/HomPage__Hover.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+<style>
+	body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		.header {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
+
+		.sidebar {
+			background-color: #f1f1f1;
+			padding: 10px;
+			float: left;
+			height: 40px;
+			width: 100%;
+			box-sizing: border-box;
+            display: flex;
+		}
+
+      .sidebar ul{
+		  list-style-type: none;
+			margin: 0;
+			padding: 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+	.sidebar li {
+			padding: 5px;
+			text-align: center;
+			line-height: 100%;
+			margin-left:60px ;
+			
+		}
+
+	.sidebar li a {
+			color: #333;
+			text-decoration: none;
+			font-size: 20px;
+			font-weight: bold;
+			color: red;
+		}
+	
+	.sidebar 	li a:hover {
+			background-color: #333;
+			color: #fff;
+		}
+
+		.content {
+			padding: 10px;
+			float: left;
+			width: 80%;
+			height: 100%;
+			box-sizing: border-box;
+		}
+
+		.footer {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+			clear: both;
+		}
+
+		ul {
+	
+		}
+
+	
+	</style>
+</head>
+<body>
+	<header class="header">
+		<h1>Admin Panel</h1>
+	</header>
+
+	<nav class="sidebar">
+		<ul>
+			<li><a href="http://localhost:3000/TrangChu">Trang chủ</a></li>
+				<li><a href="http://localhost:3000/Admin/AddProduct">Thêm sản phẩm</a></li>
+				<li><a href="http://localhost:3000/Admin/Product#">Xem tất cả sản  phẩm </a></li>
+			<li><a href="http://localhost:3000/Admin/Account/user">user</a></li>
+			<li><a href="#">Settings</a></li>
+		</ul>
+	</nav>
+
+	<div class="containner">
+   <form  method="post" action="{{notis._id}}/update?method=PUT">
+
+     <div class="form-group">
+        <label for="Date">Date</label>
+        <input type="text" class="form-control" id="Date" name="Date" value="{{notis.Date}}" placeholder="Tên sản phẩm">
+    </div>
+    {{!-- Mô tả--}}
+    <div class="form-group">
+        <label for="content">Content</label>
+        <input type="Text" class="form-control" name="content" id="content" value="{{notis.content}}" placeholder="Mô tả">
+    </div>
+    {{!-- Img --}}
+    <div class="form-group">
+        <label for="image">Img</label>
+        <input type="file" class="form-control" id="image" name="image" value="{{notis.img}}" placeholder="Hình ảnh  ">
+    </div>
+     <button type="submit" class="btn btn-primary" style="background-color: Red;">Lưu sản phẩm</button>
+</form>
+    </div>
+
+
+	<footer class="footer">
+		<p>Copyright &copy; 2023</p>
+	</footer>
+</body>
+</html>

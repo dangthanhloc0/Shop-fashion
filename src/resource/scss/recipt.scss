@@ -1,0 +1,101 @@
+.Img_product{
+    height: 450px;
+    width: 500px;
+    margin: 10px 30px;
+ }
+ 
+ .Product--information{
+     background-color: rgb(231, 231, 29);
+     width: 650px;
+     margin: 10px 20px;
+ 
+ }
+ 
+ .Product--information--body{
+     margin: 0 20px;
+ }
+ 
+ .Product--information--body--Name{
+     height: 40px;
+     text-align: center;
+ }
+ 
+ 
+ .Product--information--body--cost{
+     font-size: 30px;
+ }
+ 
+ .Product--information--body--cost span{
+     font-size: 20px;
+     color: rgb(236, 21, 21);
+     font-weight: bold   ;
+ }
+ .Product--information--body--describe{
+     display: flex;
+     font-size: 30px;
+     flex-wrap: wrap;
+ }
+ 
+ .Product--information--body--describe span{
+     font-size: 16px;
+     word-wrap: break-word;
+     word-break: break-all;
+ 
+     /* white-space: nowrap;
+     overflow: hidden; */
+ }
+ .Product--information--body--Address{
+     font-size: 30px;
+     
+ }
+ 
+ .Product--information--body--Address span {
+     font-size: 16px;
+ }
+ 
+ .Product--checkNumber{
+     /* height: 60px; */
+     background-color: rgb(165, 214, 214);
+   
+ }
+ 
+ .Product--checkNumber p{ 
+     font-size: 30px;
+ }
+ 
+ .Product--checkNumber div{
+     background-color: white;
+     height: 30px;
+     width: 200px;
+     display: flex;
+     justify-content: space-between;
+ }
+ 
+ .Product--checkNumber div button{
+  width: 40px;
+  cursor: pointer;
+ }
+ 
+ .receipt{
+     height: 100px;
+     display: flex;
+     justify-content: space-evenly;
+ }
+ 
+ 
+ .receipt button{
+     height: 60px;
+     width: 150px;   
+     margin-top: 20px;
+     text-align: center;
+     background-color: rgb(202, 87, 87);
+     outline: none;
+     color: white;
+     border-radius: 20px;
+     font-weight: bold;
+     cursor: pointer;
+ }
+ 
+ 
+ 
+ 

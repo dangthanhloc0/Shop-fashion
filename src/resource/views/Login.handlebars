@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/all.min.css">
+     <link rel="stylesheet" href="http://localhost:3000/css/Login/Login.css">
+      <link rel="stylesheet" href="http://localhost:3000/css/HomePage/Base.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    
+    <title>Document</title>
+</head>
+<body>  
+    <div class="">  
+        <div class="Login">
+            <form action="/Login/checkAccount" method="post">
+                <h1>LOGIN</h1>
+                <div class="containner">
+                   <div  class="containner__form--control">
+                       <input id="Email" type="email" name="Email" placeholder="Nhập Email của bạn" >
+                       <span></span>
+                       <small>{{Notification}}</small>
+                       
+                   </div>
+                   <div class="containner__form--control">
+                       <input id="Password" name="Password" type="password" placeholder="Mật khẩu">
+                       <span></span>
+                       <small></small>
+                       
+                   </div>
+   
+                </div>
+   
+                <footer>
+                   <Button type="submit">Đăng nhập</Button>
+                 
+                   <p><a href="">Quên mật khẩu</a>   <a href="http://localhost:3000/Register">Đăng kí</a> </p>
+                </footer>
+            </form>
+            
+        </div>
+    </div>
+</body>
+<script>
+var Name=document.querySelector('#Email')
+var Password=document.querySelector('#Password')
+var form=document.querySelector('form')
+
+function showError(input,message){
+    let parent =input.parentElement;
+    let small=parent.querySelector('small')
+    parent.classList.add('error')
+    small.innerText = message
+}
+
+
+
+function showSuccess(input){
+    let parent =input.parentElement;
+    let small=parent.querySelector('small')
+    parent.classList.remove('error')
+    small.innerText = ''
+}
+//check empty
+function checkEmptyError(listInput){
+    let isEmptyError= true;
+    listInput.forEach(input => {
+        input.value=input.value.trim()
+    if(!input.value){
+        isEmptyError=false;
+        showError(input,'Không được để trống')
+    }
+    else{
+        showSuccess(input)
+    }    
+    });
+    return isEmptyError;
+}
+//check email
+function checkEmailError(input){
+    const regexEmail =
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    input.value=input.value.trim();
+    let isEmailError=!regexEmail.test(input.value);
+    if(input.value.length>0){
+        if(regexEmail.test(input.value)){
+            showError(input,'Email lỗi.')
+            isEmailError=false;
+        }
+        else{
+            showSuccess(input)
+            isEmailError=true;
+        }
+    }
+    return isEmailError
+}
+//check password
+// Ít nhất một ký tự chữ hoa
+// Ít nhất một ký tự Chữ thường
+// Ít nhất một chữ số
+// Ít nhất một biểu tượng/ký tự đặc biệt @$!%*#?&^_-
+// Tối thiểu 8 ký tự/chữ số
+
+
+
+form.addEventListener('submit',function(e){
+   let isEmptyError= checkEmptyError([Email,Password]) 
+ //  let isEmailError=checkEmailError(Email)
+   if( isEmptyError===false || isEmailError===false ){
+     e.preventDefault()
+   }
+})
+
+     </script>
+  
+</html>

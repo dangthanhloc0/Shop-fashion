@@ -1,0 +1,113 @@
+.header__notify {
+  background-color: white;
+  width: 500px;
+  position: absolute;
+  right: 8px;
+  top: 34px;
+  border: 1px solid rgba(102, 102, 102, 0.3);
+  border-radius: 2px;
+  will-change: opacity, transform;
+  z-index: 1;
+  display: none; }
+
+.header__notify--heading {
+  background-color: white;
+  height: 50px;
+  line-height: 50px;
+  margin: 0 8px;
+  text-transform: capitalize;
+  cursor: default;
+  user-select: none;
+  color: black; }
+
+.header__notify--list {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  height: 300px; }
+
+.header__notify--item {
+  display: flex;
+  width: 100%;
+  padding: 8px;
+  text-decoration: none;
+  background-color: rgba(255, 48, 7, 0.08); }
+
+.header__notify--body {
+  margin: 0 8px; }
+
+.header__notify--name {
+  color: black;
+  font-weight: 500;
+  font-size: 20px;
+  margin: 3px 0; }
+
+.header__notify--description {
+  color: black;
+  opacity: 0.8;
+  font-size: 16px;
+  margin: 0; }
+
+.header__notify--item:hover {
+  background-color: rgba(143, 143, 143, 0.1); }
+
+.header__notify--footer {
+  height: 40px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 15px; }
+
+.header__notify--btn {
+  display: block;
+  text-decoration: none;
+  color: black;
+  background-color: red;
+  height: 30px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer; }
+
+.header__notify-more-btn:hover {
+  background-color: rgba(204, 204, 204, 0.08); }
+
+.header__notify::after {
+  content: "";
+  position: absolute;
+  top: -18px;
+  height: 18px;
+  border-color: transparent;
+  border-bottom-color: #fff;
+  width: 100%; }
+
+.User--hover:hover .header__notify {
+  display: block; }
+
+/* cart */
+.cart {
+  position: absolute;
+  /* display: block; */
+  z-index: 1; }
+
+.header__notify--body img {
+  height: 60px;
+  width: 60px; }
+
+.cart__notify--body {
+  display: flex; }
+
+.cart__notify--body h3 {
+  font-size: 20px;
+  margin-left: 5px;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; }
+
+.cart__notify--body p {
+  font-size: 20px;
+  margin: 0 10px;
+  color: red; }
+
+.foot__header--sreach--cart:hover .cart {
+  display: block; }

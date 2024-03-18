@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost:3000/css/HomePage/HomePage.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/HomePage/Base.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/HomePage/HomPage__Hover.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+<style>
+	body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		.header {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
+
+		.sidebar {
+			background-color: #f1f1f1;
+			padding: 10px;
+			float: left;
+			height: 40px;
+			width: 100%;
+			box-sizing: border-box;
+            display: flex;
+		}
+
+      .sidebar ul{
+		  list-style-type: none;
+			margin: 0;
+			padding: 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+	.sidebar li {
+			padding: 5px;
+			text-align: center;
+			line-height: 100%;
+			margin-left:60px ;
+			
+		}
+
+	.sidebar li a {
+			color: #333;
+			text-decoration: none;
+			font-size: 20px;
+			font-weight: bold;
+			color: red;
+		}
+
+	.sidebar 	li a:hover {
+			background-color: #333;
+			color: #fff;
+		}
+
+		.content {
+			padding: 10px;
+			float: left;
+			width: 80%;
+			height: 100%;
+			box-sizing: border-box;
+		}
+
+		.footer {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+			clear: both;
+		}
+
+		ul {
+	
+		}
+
+	
+	</style>
+</head>
+<body>
+	<header class="header">
+		<h1>Notification</h1>
+	</header>
+
+	<nav class="sidebar">
+		<ul>
+				<li><a href="http://localhost:3000/Admin">Trang chủ</a></li>
+				<li><a href="http://localhost:3000/Admin/Product"> sản  phẩm</a></li>
+				<li><a href="http://localhost:3000/Admin/receipt/all"> đơn hàng</a></li>
+				<li><a href="http://localhost:3000/Admin/Account/user"> người dùng</a></li>
+				<li><a href="http://localhost:3000/Admin/Help/all"> chatBox</a></li>
+				<li><a href="http://localhost:3000/Admin/notification/all"> thông báo</a></li>
+		</ul>
+	</nav>
+ <h1><a href="http://localhost:3000/Admin/Noti/add">Thêm thông báo</a></h1>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">stt</th>
+      <th scope="col">Thời gian</th>
+      <th scope="col">Nội dung</th>
+      <th scope="col">Ảnh</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each notis}}
+    <tr>
+      <th scope="row">{{sum @index 1}}</th>
+      <td>{{Date}}</td>
+      <td>{{content}}</td>
+      <td><img style="height: 100px; width:100px" src="/imgNoti/{{Img}}" alt=""></td>
+      
+      <td>
+          <a href="delete/{{_id}}" >Xóa</td>
+      
+    </tr>
+    {{/each}}
+    
+  </tbody>
+</table>
+
+
+</body>
+</html>

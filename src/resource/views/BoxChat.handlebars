@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://localhost:3000/css/BoxChat/BoxChat.css">
+</head>
+<body>
+    <div  class="boxchat"> 
+        <form action="/BoxChat/save" method="post">
+            <div class="boxchat__header">
+                <p class="boxchat__header__text">Nhận tư vấn ngay!</p>
+            </div>
+            
+            <div class="boxchat__body">
+                <div class="boxchat__body--set">
+                     <input id="Name" name="Name" type="text" placeholder="Tên bạn.">
+                     <small></small>        
+                </div>  
+                <div class="boxchat__body--set">
+                    <input id="Email" name="Email" type="email" placeholder="Email.">
+                    <small></small>
+                </div>    
+                <div class="boxchat__body--set">
+                    <input id="Phone" name="Phone" type="number  " placeholder="Số điện thoại.">
+                    <small></small>
+                </div>    
+              
+                <div class="boxchat__body--set">
+                     <input id="Problem" name="Problem" type="text" placeholder="Vấn đề cần tư vấn.">
+                     <small></small>
+                </div>                  
+               
+               
+            </div>
+            
+            <div class="boxchat__foot">
+                <input id="CheckBox" class="boxchat__foot__input" type="checkbox" > 
+                <p class="boxchat__foot__input__text" >Vui lòng check để đảm bảo thông tin ở trên là chính xác.</p>
+            </div>
+            
+            <div class="boxchat__button">
+                <button type="submit" class="boxchat__button__click">Gửi yêu cầu.</button>
+            </div>
+                
+            <div class="boxchat--ThongBao Toast--ThanhCong">
+                <i class="fa-regular fa-circle-check" style="color: #429532;"></i>
+                <span>Bạn đã gửi yêu cầu thành công vui lòng đợi thông báo của chúng tôi.</span>
+        </div>
+
+        <div class="boxchat--ThongBao Toast--ThatBai" id="Flase" >
+                <i class="fa-regular fa-circle-check" style="color: #429532;"></i>
+                <span>bạn vui lòng xác nhận thông tin.</span>
+        </div>         
+        
+        </form>
+  
+    </div>
+</body>
+      <script  >
+var Name=document.querySelector('#Name')
+var Email=document.querySelector('#Email')
+var Phone=document.querySelector('#Phone')
+var Link=document.querySelector('#Link')
+var Problem=document.querySelector('#Problem')
+var form=document.querySelector('form')
+var checkBox=document.querySelector('#CheckBox')
+
+var checkInfomation=document.querySelector('#Flase').style
+
+
+function showError(input,message){
+    let parent =input.parentElement;
+    let small=parent.querySelector('small')
+    parent.classList.add('error')
+    small.innerText = message
+}
+
+
+
+function showSuccess(input){
+    let parent =input.parentElement;
+    let small=parent.querySelector('small')
+    parent.classList.remove('error')
+    small.innerText = ''
+}
+
+
+function checkEmptyError(listInput){
+    
+    listInput.forEach(input => {
+        input.value=input.value.trim()
+    if(!input.value){
+        isEmptyError=true;
+        showError(input,'Không được để trống')
+    }
+    else{
+        showSuccess(input)
+    }
+        
+    });
+
+
+    return isEmptyError;
+}
+
+function checkEmailError(input){
+    const regexEmail =  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    input.value=input.value.trim();
+    let isEmailError=false
+    if(input.value.length>0){
+        if(regexEmail.test(input.value)){
+           showSuccess(input)
+          
+        }
+        else{
+           showError(input,'Email lỗi.')
+           isEmailError=true
+        }
+    
+    }
+    return isEmailError;
+}
+
+
+function checkPhoneError(input){
+    let isPhoneError=false;
+    var myPhoneRegex = /(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]‌​)\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)([2-9]1[02-9]‌​|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})\s*(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+)\s*)?$/i;
+    
+    if(input.value.length>0){
+      if (input.Phone.length==10) {
+        showSuccess(input)
+        isPhoneError=true
+    } else {
+        showError(input,"Số điện thoại không hợp lệ")
+    }
+    }
+    return isPhoneError;
+}
+
+function checkNameError(input){
+    let isNameError=false;
+    let min=3;
+    input.value=input.value.trim();
+    if( input.value.length>0){
+    if(input.value.length < 3 ){
+        showError(input,'Tên quá ngắn')
+       
+    }
+    else{
+        showSuccess(input)
+         isNameError=true;
+    }
+}
+  
+    return isNameError;
+}
+
+
+function checkBoxError(input){
+     let isCheckBox=false
+     if(input.checked==false){
+        checkInfomation.display='block'
+     }
+     else{
+        checkInfomation.display='none'
+        isCheckBox=true
+     }
+    return isCheckBox
+}
+
+
+function CheckProblem(input){
+    let isProblem=false;
+  
+    input.value=input.value.trim();
+    if( input.value.length>0){
+    if(input.value.length <21){
+        showError(input,'Cần trên 20 kí tự')     
+    }
+    else{
+        showSuccess(input)
+         isProblem=true;
+    }
+}
+    return isProblem;
+}
+
+form.addEventListener('submit',function(e){
+   checkEmptyError([Name,Phone,Email,Problem]) 
+   let isEmailError=checkEmailError(Email)
+   let isPhoneError=checkPhoneError(Phone)
+   let isNameError=checkNameError(Name)
+   let ischeckBox=checkBoxError(checkBox)
+   let isProblem=CheckProblem(Problem)
+    console.log(isEmailError,isPhoneError,isNameError,ischeckBox,isProblem)
+    var result=0
+    if(isEmailError==true && isPhoneError==true && isNameError==true && ischeckBox==true && isProblem==true)
+       result=1
+    if(result==0){
+          e.preventDefault()
+    }
+   
+})
+
+
+    </script>
+</html>

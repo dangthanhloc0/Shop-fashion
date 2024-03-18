@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/all.min.css">
+     <link rel="stylesheet" href="http://localhost:3000/css/Login/Login.css">
+      <link rel="stylesheet" href="http://localhost:3000/css/HomePage/Base.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="">
+        <div class="Login" id="login-form">
+            <form action="/Register/AddUser" method="post" >
+                <h1>REGISTER</h1>
+                <div class="containner">
+                   <div class="containner__form--control">
+                 
+                       <input id="Name" Name="Name" type="text" placeholder="Tên đăng nhập">       
+                       <span></span>
+                       <small></small>
+                   </div>
+                   <div class="containner__form--control">
+                 
+                       <input id="Email" Name="Email"type="email" placeholder="EMAIL">                    
+                       <span></span>
+                       <small>{{notiticaiton}}</small>
+                   </div>
+                  
+                   <div class="containner__form--control">
+                       <input id="Password" name="Password" type="password" placeholder="Mật khẩu">                
+                       <span></span>
+                       <small></small>
+                   </div>
+                 
+                   <div class="containner__form--control">
+                       <input id="Password__again" name="Password__again" type="password" placeholder="Nhập lại mật khẩu" >                 
+                       <span></span>
+                       <small></small>
+                   </div>
+   
+                </div>
+   
+                <footer>
+                   <Button type="submit">Đăng kí</Button>
+                 
+                   <p><a href="">Quên mật khẩu</a>   <a href="http://localhost:3000/Login">Đăng nhập</a> </p>
+                </footer>
+            </form>
+               
+        </div>
+    </div>
+</body>
+    <script  >
+var Name=document.querySelector('#Name')
+var Email=document.querySelector('#Email')
+var form=document.querySelector('form')
+var Password=document.querySelector('#Password')
+var Password__again=document.querySelector('#Password__again')
+
+function showError(input,message){
+    let parent =input.parentElement;
+    let small=parent.querySelector('small')
+    parent.classList.add('error')
+    small.innerText = message
+}
+
+function showSuccess(input){
+    let parent =input.parentElement;
+    let small=parent.querySelector('small')
+    parent.classList.remove('error')
+    small.innerText = ''
+}
+
+function checkEmptyError(listInput){
+    listInput.forEach(input => {
+        input.value=input.value.trim()
+    if(!input.value){
+        showError(input,'Không được để trống')
+    }
+    else{      
+        showSuccess(input)
+    }     
+    });
+}
+
+function checkEmailError(input){
+    const regexEmail =
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    input.value=input.value.trim();
+    let isEmailError=false;
+    if(input.value.length>0){
+        if(!regexEmail.test(input.value)){
+            showError(input,'Email lỗi.')
+           
+        }
+        else{
+            showSuccess(input)
+             isEmailError=true;
+        }
+    
+    }
+    return isEmailError
+}
+
+function checkNameError(input){
+    let isNameError=false;
+   
+    input.value=input.value.trim();
+    if( input.value.length>0){
+    if(input.value.length < 3 ){
+        showError(input,'Tên quá ngắn')
+       
+    }
+    else{
+        showSuccess(input)
+         isNameError=true;
+    }
+}
+  
+    return isNameError;
+}
+// Ít nhất một ký tự chữ hoa
+// Ít nhất một ký tự Chữ thường
+// Ít nhất một chữ số
+// Ít nhất một biểu tượng/ký tự đặc biệt @$!%*#?&^_-
+// Tối thiểu 8 ký tự/chữ số
+function checkPasswordError(input){
+    let isPassword=false;
+    const regexPassword=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/;
+    input.value=input.value.trim()
+    if(input.value.length>0)
+    {
+        if(regexPassword.test(input.value)){
+            showSuccess(input)
+             isPassword=true;
+        }
+        else{
+            showError(input,'Xin hay nhập lại mật khẩu,mật khẩu phải có 1 kí tự thường  1 kí tự hoa,1 chữ số và 1 kí tự đặc biệt    ')
+        }
+    }
+
+    return isPassword
+}
+
+
+
+function checkPassworAgainError(input,input1){
+    let isCheckPassword=false;
+        if(input1.value.length>0){
+        if(input.value===input1.value){
+            showSuccess(input1)
+            isCheckPassword=true;
+        }
+        else{    
+             showError(input1,'Mật khẩu không trùng khớp')
+        }
+    }
+  
+    return isCheckPassword
+}
+
+//check users
+
+
+form.addEventListener('submit',function(e){
+ 
+   checkEmptyError([Name,Password,Password__again,Email]) 
+   let isNameError=checkNameError(Name)
+   let isEmailError=checkEmailError(Email)
+   let isCheckPassword=checkPasswordError(Password)
+   let isCheckPasswordAgain=checkPassworAgainError(Password,Password__again)
+  
+   let result=0;
+  // console.log(isNameError,isEmailError,isCheckPassword,isCheckPasswordAgain)
+   if(isNameError===true && isEmailError===true && isCheckPassword===true && isCheckPasswordAgain==true)
+        result=1
+    if(result==0)
+     e.preventDefault()
+  })
+
+    </script>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost:3000/css/HomePage/HomePage.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/HomePage/Base.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/HomePage/HomPage__Hover.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+  
+ 
+    
+</head>
+<body>
+    <div class="app">
+        <!-- start header -->
+        <header>
+            <!-- strat navbar -->
+            <nav class="start__header">
+                <ul>
+                    <li>
+                        <a href="http://localhost:3000/Login/checkAccount">Trang Chủ</a>
+                    </li>
+                    <li>Kết nối với chúng tôi qua Fb.</li>
+                    <a href="https://www.facebook.com/profile.php?id=100033018489893"><i class="fa-brands fa-facebook" style="color: var(--Color--text);"></i></a>
+                    <a href="https://www.instagram.com/dangthanhloca2/"><i class="fa-brands fa-instagram" style="color: var(--Color--text); margin-left: 10px;"></i></a>
+                </ul>
+                <ul>
+                    <li class="User--hover">
+                        <i class="fas fa-bell"></i>
+                        Thông báo
+                               <!-- Begin: Header Notifition -->
+                               <div class="header__notify ">
+                                <header class="header__notify--heading">
+                                    Thông báo mới nhận
+                                </header>
+                                <div class="header__notify--list">
+                                    {{#each notis}}
+                                    <a href="" class="header__notify--item">
+                                      <img style="height: 60px; width: 60px;" src="/imgNoti/{{Img}}" alt="">
+                                        <div class="header__notify--body">
+                                            <h3 class="header__notify--name">{{Date}}</h3>
+                                            <p class="header__notify--description">{{content}}</p>
+                                        </div>
+                                    </a>
+                                    {{/each}}                              
+                                </div>
+                                <footer class="header__notify--footer">       
+                                        <button class="header__notify--btn"><a href="http://localhost:3000/Login/checkAccount/detailCart">Xem tất cả</a></button>
+
+                                </footer>
+                            </div>
+                            <!-- End: Header Notifition -->
+                    </li>
+                         
+                    <li><a href="http://localhost:3000/BoxChat"><i class="fa-solid fa-question"></i> Liên hệ</a></li>
+                    <li>
+                        <a href="http://localhost:3000/Login">{{result.Name}}</a>
+                   
+                        </li>
+                 
+                </ul>
+            </nav>
+            <!-- end navbar -->
+
+            <div class="foot__header">
+                <div class="foot__header--img">
+                     <img  src="/Img/logo.png" alt="Ảnh lỗi.">
+                </div>
+                <div class="foot__header--sreach">
+                    <div class="foot__header--sreach--input">
+                        <input type="text" placeholder="Nhập sản phẩm tìm kiếm">
+
+                        <!-- start input  table -->
+                        <div class="foot__header--sreach--input--table">
+                            <header >
+                                <p>Lịch sử s kiếm</p>
+                            </header>
+                            <!-- item demo -->
+                            <div class="foot__header--sreach--input--table--list">
+                                <a href="" class="foot__header--sreach--input--table--item">
+                                    <p>Áo thun</p>
+                                </a>
+                          
+                            </div>
+                            <footer class="header__notify--footer  ">       
+                                <button class="header__notify--btn">Xem tất cả</button>
+
+                        </footer>
+                        </div>
+                          <!-- end input  table -->
+                          
+
+                    </div>
+                    <div class="foot__header--sreach--wing"></div>
+                    <div class="foot__header--sreach--input--icon">
+                        <div class="foot__header--sreach--input--icon--inner" >
+                            <a href=""><i class="fa-solid fa-magnifying-glass" style="color: var(--Color--text);" ></i></a>
+                        </div>
+                    </div>
+                        
+                </div>
+
+                <div class="foot__header--sreach--cart">
+                    <i class="fa-solid fa-cart-shopping" style="color:var(--Color--text); font-size: 40px;"></i>
+                     <!-- start cart -->
+
+                        <div class="cart  header__notify">
+                            <header class="header__notify--heading header__cart">
+                                Sản phẩm mới thêm
+                            </header>
+
+                           
+                            <div class="header__notify--list">
+                                 <!-- demo san pham -->
+                                 {{#each carts}}
+                                <a href="{{link}}" class="header__notify--item">
+                                  
+                                    <div class="header__notify--body cart__notify--body">
+                                        <img src="/Img/{{Img}}" alt="Anh loi">
+                                        <h3 >{{Name}}</h3>
+                                        <p>{{Cost}}</p>
+                                    </div>
+                                </a>
+                                {{/each}}
+                                 
+                            </div>
+                            <footer class="header__notify--footer">       
+                                       <button class="header__notify--btn"><a href="http://localhost:3000/Login/checkAccount/detailCart">Xem tất cả</a></button>
+
+                            </footer>
+
+                        
+                        </div>
+                        <!-- End: Header Notifition -->
+                    <!-- end cart -->
+                </div>
+
+                    
+                <div class="cart__count">
+                     <span>{{count}}</span>
+                </div>
+
+            </div>
+                
+           
+        </header> 
+
+        <div class="containner">
+            <!-- start__containner -->
+                <div class="start__containner">
+
+                    <div class="start__containner__box1">
+                        <div class="start__containner__box1--cointan">
+                            <div class="start__containner__box1--Table">
+                                <i class=" fas fa-list-ul"></i>
+                                <span>DANH MUC</span>
+                            </div>
+                            <div class="start__containner__box1--list">
+                                <div class="start__containner__box1--list--node">
+                                    <div></div>
+                                    <p><a href="">dưỡng ẫm</a></p>
+                                </div>
+                            </div> 
+                        </div>  
+                    </div>
+
+
+                    <div class="start__containner__box2">
+                        <div class="grid" >
+                            <div class="grid__nav">
+                                <nav> 
+                                    <span>Sắp xếp theo</span>
+                                    <div><p>Phổ biến</p></div>
+                                    <div><p>Mới nhất</p></div>
+                                    <div><p>Bán chạy</p></div>
+                                    <div><p>Giá:Sắp xếp theo</p></div>
+                                    
+                                </nav>
+                             </div>
+
+                            <div class="container__product">
+                                <div class="grid">
+                                    <div class="grid__row">
+                                        <!-- product -->
+                                    {{!--Vòng lặp của sản phẩm --}}                
+                                    {{#each products}}  
+                                            <form action="/purchase/{{_id}}/product" method="get" class="grid__column-2-4">
+                                            <div  id="product"  href="" class="container__product-item">
+                                                <div class="container__product-item-img" >
+                                                    <img style="height:200px; width: 100%;" src="/img/{{Img}}  " alt="Ảnh lỗi.">                                         
+                                                </div>
+                                                <div class="container__product-item-heading"><h4 class="container__product-item-text">{{Name}}</h4></div>
+                                                <span  class="container__product-item-price-cost">Giá:{{Cost}}</span>
+                                               
+                                                
+                                                <p class="container__product-item-score-sold">Đã bán:{{Count}}</p>   
+                                                <button class="btn btn-primary" type="submit" style="margin-left:50px">Mua ngay</button>
+                                              
+                                            </div>
+                                            
+                 
+                                            </form>                                        
+                                         {{/each}}     
+                                      
+                                  
+                                       
+
+                                        <!-- end product -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+      
+           <div class="PhanCanh"></div>
+    
+
+
+
+    <footer>
+        <div class="footer__Box1">
+            <div class="nav__Giua__logo">
+                <img width="195" height="200" title="logo" alt="logo" class="lazy" src="/Img/Logo.Png">
+                <p class="footer__Box1__text__InDam">Công ty cổ phần 1 thành viên</p>
+            </div>
+            <p class="footer__text">Chuyên hoạt động trong lĩnh vực Marketing Online, được thành lập từ vốn đầu tư nước ngoài, với các chuyên gia và công nghệ đến từ Nhật Bản.</p>
+            <div class="nav__Giua__logo">
+            {{!-- <img width="195" height="100" title="logo" alt="logo" class="lazy" src="/"> 
+            <img width="195" height="100" title="logo" alt="logo" class="lazy" src="/Img/a7.png"> --}}
+            </div>
+        </div>
+
+        <div class="footer__Box2">
+            <p class="footer__TieuDe">Liên hệ</p>
+            <div class="PhanCanh"></div>
+           
+            <p class="footer__text"> <i class="fa-solid fa-phone nav__dau__icon" style="color: #d51a2d;"></i> Hotline Kinh doanh:0379001285  </p>
+            
+            <p class="footer__text"><i class="fa-solid fa-phone nav__dau__icon" style="color: #d51a2d;"></i>Hotline CSKH:0379001285  </p>
+          
+            <p class="footer__text">  <i class="fa-solid fa-envelope fa-beat nav__dau__icon" style="color: #d51a2d;"></i>dangthanhloc2@gmail.com</p>
+            
+        </div>
+        <div class="footer__Box3">
+            <p class="footer__TieuDe">Địa chỉ</p>
+            <div class="PhanCanh"></div>
+                             
+            <p  class="footer__text"> <i class="fa-solid fa-location-dot nav__dau__icon" style="color: #d51a2d;"></i> <a  class="footer__text" href="https://www.google.com/maps/place/C%C3%B4ng+ty+C%E1%BB%95+Ph%E1%BA%A7n+Global+Online+Branding/@10.7817092,106.6525862,17z/data=!3m1!4b1!4m6!3m5!1s0x31752ebeeb17c645:0xad08da6dd19041a7!8m2!3d10.7817092!4d106.6551665!16s%2Fg%2F1pv5wjs0d?entry=ttu"> Toà nhà GOBRANDING, 235 Lý Thường Kiệt, P. 6, Q. Tân Bình, Tp.HCM</a>  </p>
+                              
+            <p class="footer__text"> <i class="fa-solid fa-location-dot nav__dau__icon" style="color: #d51a2d;"></i> <a class="footer__text" href="https://www.google.com/maps/place/Vi%E1%BB%87t+%C3%81+Tower/@21.0306405,105.7823646,17z/data=!3m1!4b1!4m6!3m5!1s0x3135ab4c7d5152a7:0xa6fd0e9a5a068a5f!8m2!3d21.0306405!4d105.7849449!16s%2Fg%2F1trr9nxr?entry=ttu">Tầng 7 tòa nhà Việt Á, Số 9 phố Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy, Hà Nội.</a>  </p>
+                               
+                
+        </div>
+
+      
+      
+    </footer>
+    </div>
+</body>
+    {{!-- <script src="/src/public/fontawesome-free-6.4.0-web/js/all.min.js"></script> --}}
+</html>
